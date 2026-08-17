@@ -1,0 +1,249 @@
+﻿<Window x:Class="Sistema_Bancário.Cadastro.main_Reg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Cadastro - Fonseca Bank"
+        Width="900"
+        Height="600"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+
+        <Style x:Key="InputStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#222222"/>
+            <Setter Property="Background" Value="#FAFAFA"/>
+            <Setter Property="BorderBrush" Value="#D5D5D5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="PasswordStyle" TargetType="PasswordBox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#222222"/>
+            <Setter Property="Background" Value="#FAFAFA"/>
+            <Setter Property="BorderBrush" Value="#D5D5D5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="RegisterButton" TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="#4B168C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="BackButton" TargetType="Button">
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#4B168C"/>
+            <Setter Property="BorderBrush" Value="#4B168C"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Border Background="White"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="0">
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.1*"/>
+                <ColumnDefinition Width="1.4*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="#4B168C"
+                    CornerRadius="0">
+
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+
+                    <TextBlock Text="F"
+                               FontSize="60"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Fonseca Bank"
+                               FontSize="28"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Seu banco, suas escolhas."
+                               FontSize="14"
+                               Foreground="#D8B4FE"
+                               HorizontalAlignment="Center"
+                               Margin="0,8,0,0"/>
+
+                </StackPanel>
+
+            </Border>
+
+            <Grid Grid.Column="1"
+                  Margin="65,25,65,25">
+
+                <Button Content="X"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        Foreground="#777777"
+                        BorderThickness="0"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="CloseButton_Click"/>
+
+                <StackPanel VerticalAlignment="Center">
+
+                    <TextBlock Text="Crie sua conta"
+                               FontSize="27"
+                               FontWeight="SemiBold"
+                               Foreground="#222222"/>
+
+                    <TextBlock Text="Preencha seus dados para continuar"
+                               FontSize="14"
+                               Foreground="#777777"
+                               Margin="0,7,0,18"/>
+
+                    <TextBlock Text="Nome"
+                               FontSize="13"
+                               FontWeight="SemiBold"
+                               Foreground="#333333"
+                               Margin="0,0,0,5"/>
+
+                    <TextBox x:Name="NomeTextBox"
+                             Tag="Digite seu nome completo"
+                             Style="{StaticResource InputStyle}"/>
+
+                    <Grid Margin="0,10,0,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0"
+                                    Margin="0,0,7,0">
+
+                            <TextBlock x:Name="lbCPF"
+                                       Text="CPF"
+                                       FontSize="13"
+                                       FontWeight="SemiBold"
+                                       Foreground="#333333"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBox x:Name="CpfTextBox"
+                                     Tag="000.000.000-00"
+                                     Style="{StaticResource InputStyle}"/>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="7,0,0,0">
+
+                            <TextBlock x:Name="lbDataNascimento"
+                                       Text="Data de nascimento"
+                                       FontSize="13"
+                                       FontWeight="SemiBold"
+                                       Foreground="#333333"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBox x:Name="DataNascimentoTextBox"
+                                     Tag="00/00/0000"
+                                     Style="{StaticResource InputStyle}"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <Grid Margin="0,10,0,0">
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*"/>
+                            <ColumnDefinition Width="1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0"
+                                    Margin="0,0,7,0">
+
+                            <TextBlock x:Name="lbTelefone"
+                                       Text="Telefone"
+                                       FontSize="13"
+                                       FontWeight="SemiBold"
+                                       Foreground="#333333"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBox x:Name="TelefoneTextBox"
+                                     Tag="(00) 00000-0000"
+                                     Style="{StaticResource InputStyle}"/>
+
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1"
+                                    Margin="7,0,0,0">
+
+                            <TextBlock x:Name="lbEmail"
+                                       Text="Email"
+                                       FontSize="13"
+                                       FontWeight="SemiBold"
+                                       Foreground="#333333"
+                                       Margin="0,0,0,5"/>
+
+                            <TextBox x:Name="EmailTextBox"
+                                     Tag="name@email.com"
+                                     Style="{StaticResource InputStyle}"/>
+
+                        </StackPanel>
+
+                    </Grid>
+
+                    <TextBlock x:Name="lbSenha" 
+                               Text="Senha"
+                               FontSize="13"
+                               FontWeight="SemiBold"
+                               Foreground="#333333"
+                               Margin="0,10,0,5"/>
+
+                    <PasswordBox x:Name="SenhaPasswordBox"
+                                 Style="{StaticResource PasswordStyle}"/>
+
+                    <Button Content="CRIAR CONTA"
+                            Style="{StaticResource RegisterButton}"
+                            Margin="0,18,0,0"
+                            Click="CadastrarButton_Click"/>
+
+                    <Button Content="VOLTAR"
+                            Style="{StaticResource BackButton}"
+                            Margin="0,8,0,0"
+                            Click="VoltarButton_Click"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
+
+</Window>

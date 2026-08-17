@@ -1,0 +1,177 @@
+﻿<Window x:Class="Sistema_Bancário.main_Win"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fonseca Bank"
+        Width="900"
+        Height="600"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+
+        <Style x:Key="InputStyle" TargetType="TextBox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#222222"/>
+            <Setter Property="Background" Value="#FAFAFA"/>
+            <Setter Property="BorderBrush" Value="#D5D5D5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="PasswordStyle" TargetType="PasswordBox">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Foreground" Value="#222222"/>
+            <Setter Property="Background" Value="#FAFAFA"/>
+            <Setter Property="BorderBrush" Value="#D5D5D5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Padding" Value="15,0"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="LoginButton" TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="#4B168C"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="RegisterButton" TargetType="Button">
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="#4B168C"/>
+            <Setter Property="BorderBrush" Value="#4B168C"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+    </Window.Resources>
+
+    <Border Background="White"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="0">
+
+        <Grid>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.1*"/>
+                <ColumnDefinition Width="1.4*"/>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0"
+                    Background="#4B168C"
+                    CornerRadius="0">
+
+                <StackPanel VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+
+                    <TextBlock Text="F"
+                               FontSize="60"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"/>
+
+                    <TextBlock Text="Fonseca Bank"
+                               FontSize="28"
+                               FontWeight="SemiBold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               Margin="0,10,0,0"/>
+
+                    <TextBlock Text="Seu banco, suas escolhas."
+                               FontSize="14"
+                               Foreground="#D8B4FE"
+                               HorizontalAlignment="Center"
+                               Margin="0,8,0,0"/>
+
+                </StackPanel>
+
+            </Border>
+
+            <Grid Grid.Column="1"
+                  Margin="70,45,70,45">
+
+                <Button Content="X"
+                        Width="30"
+                        Height="30"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Background="Transparent"
+                        Foreground="#777777"
+                        BorderThickness="0"
+                        FontSize="13"
+                        Cursor="Hand"
+                        Click="CloseButton_Click"/>
+
+                <StackPanel VerticalAlignment="Center">
+
+                    <TextBlock Text="Olá, seja bem-vindo!"
+                               FontSize="27"
+                               FontWeight="SemiBold"
+                               Foreground="#222222"/>
+
+                    <TextBlock Text="Entre na sua conta"
+                               FontSize="14"
+                               Foreground="#777777"
+                               Margin="0,8,0,30"/>
+
+                    <TextBlock x:Name="lbCPF" 
+                               Text="CPF"
+                               FontSize="13"
+                               FontWeight="SemiBold"
+                               Foreground="#333333"
+                               Margin="0,0,0,7"/>
+
+                    <TextBox x:Name="CpfTextBox"
+                             Style="{StaticResource InputStyle}"/>
+
+                    <TextBlock Text="Senha"
+                               FontSize="13"
+                               FontWeight="SemiBold"
+                               Foreground="#333333"
+                               Margin="0,18,0,7"/>
+
+                    <PasswordBox x:Name="SenhaPasswordBox"
+                                 Style="{StaticResource PasswordStyle}"/>
+
+                    <TextBlock Text="Esqueceu sua senha?"
+                               Foreground="#4B168C"
+                               FontSize="12"
+                               HorizontalAlignment="Right"
+                               Margin="0,10,0,22"
+                               Cursor="Hand"/>
+
+                    <Button Content="ENTRAR"
+                            Style="{StaticResource LoginButton}"
+                            Click="EntrarButton_Click"/>
+
+                    <TextBlock Text="Ainda não possui uma conta?"
+                               FontSize="12"
+                               Foreground="#777777"
+                               HorizontalAlignment="Center"
+                               Margin="0,25,0,10"/>
+
+                    <Button Content="CRIAR CONTA"
+                            Style="{StaticResource RegisterButton}"
+                            Click="CadastrarButton_Click"/>
+
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
+
+</Window>

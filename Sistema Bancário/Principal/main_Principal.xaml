@@ -1,0 +1,367 @@
+﻿<Window x:Class="Sistema_Bancário.Principal.main_Principal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fonseca Bank"
+        Height="650"
+        Width="1100"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+
+        <Style x:Key="ActionButton"
+               TargetType="Button">
+
+            <Setter Property="Height"
+                    Value="90"/>
+
+            <Setter Property="Background"
+                    Value="White"/>
+
+            <Setter Property="Foreground"
+                    Value="#333333"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#DDDDDD"/>
+
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+
+            <Setter Property="FontSize"
+                    Value="14"/>
+
+            <Setter Property="Cursor"
+                    Value="Hand"/>
+
+        </Style>
+
+        <Style x:Key="AccountSelector"
+               TargetType="RadioButton">
+
+            <Setter Property="Height"
+                    Value="38"/>
+
+            <Setter Property="Width"
+                    Value="125"/>
+
+            <Setter Property="Background"
+                    Value="White"/>
+
+            <Setter Property="Foreground"
+                    Value="#666666"/>
+
+            <Setter Property="BorderBrush"
+                    Value="#DDDDDD"/>
+
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+
+            <Setter Property="FontSize"
+                    Value="13"/>
+
+            <Setter Property="FontWeight"
+                    Value="SemiBold"/>
+
+            <Setter Property="Cursor"
+                    Value="Hand"/>
+
+            <Setter Property="HorizontalContentAlignment"
+                    Value="Center"/>
+
+            <Setter Property="VerticalContentAlignment"
+                    Value="Center"/>
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="RadioButton">
+
+                        <Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="7">
+
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsChecked"
+                                     Value="True">
+
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="#4B168C"/>
+
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="#4B168C"/>
+
+                                <Setter Property="Foreground"
+                                        Value="White"/>
+
+                            </Trigger>
+
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+
+                                <Setter TargetName="Border"
+                                        Property="BorderBrush"
+                                        Value="#4B168C"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
+
+    </Window.Resources>
+
+    <Border Background="#F7F7F7"
+            BorderBrush="#CFCFCF"
+            BorderThickness="1">
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="70"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0"
+                    Background="White"
+                    BorderBrush="#E1E1E1"
+                    BorderThickness="0,0,0,1">
+
+                <Grid Margin="30,0">
+
+                    <TextBlock Text="Fonseca Bank"
+                               Foreground="#4B168C"
+                               FontSize="23"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Center">
+
+                        <TextBlock x:Name="lbNomeDoCliente"
+                                   Text="..."
+                                   Foreground="#444444"
+                                   FontSize="14"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,25,0"/>
+
+                        <Button Content="Sair"
+                                Width="65"
+                                Height="34"
+                                Background="Transparent"
+                                Foreground="#4B168C"
+                                BorderBrush="#4B168C"
+                                BorderThickness="1"
+                                Cursor="Hand"
+                                Click="SairButton_Click"/>
+
+                    </StackPanel>
+
+                </Grid>
+
+            </Border>
+
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto" MouseMove="ScrollViewer_MouseMove">
+
+                <StackPanel Margin="40,35,40,40">
+
+                    <Grid>
+
+                        <StackPanel>
+
+                            <TextBlock Text="Visão geral"
+                                       FontSize="26"
+                                       FontWeight="SemiBold"
+                                       Foreground="#222222"/>
+
+                            <TextBlock Text="Confira suas informações financeiras."
+                                       FontSize="14"
+                                       Foreground="#777777"
+                                       Margin="0,7,0,0"/>
+
+                        </StackPanel>
+
+                        <Border HorizontalAlignment="Right"
+                                VerticalAlignment="Bottom"
+                                Background="#F1F1F1"
+                                CornerRadius="8"
+                                Padding="3">
+
+                            <StackPanel Orientation="Horizontal">
+
+                                <RadioButton x:Name="rbContaCorrente"
+                                             Content="Conta corrente"
+                                             GroupName="TipoConta"
+                                             Style="{StaticResource AccountSelector}"
+                                             Checked="ContaCorrente_Checked"/>
+
+                                <RadioButton x:Name="rbPoupanca"
+                                             Content="Poupança"
+                                             GroupName="TipoConta"
+                                             Style="{StaticResource AccountSelector}"
+                                             Margin="3,0,0,0"
+                                             Checked="Poupanca_Checked"/>
+
+                            </StackPanel>
+
+                        </Border>
+
+                    </Grid>
+
+                    <Border x:Name="cardSaldo"
+                            Background="#4B168C"
+                            Height="155"
+                            Padding="30"
+                            Margin="0,25,0,0">
+
+                        <Grid>
+
+                            <StackPanel VerticalAlignment="Center">
+
+                                <TextBlock Text="SALDO DISPONÍVEL"
+                                           FontSize="12"
+                                           Foreground="#D8B4FE"
+                                           FontWeight="SemiBold"/>
+
+                                <TextBlock x:Name="lbSaldoConta"
+                                           Text="R$ 0,00"
+                                           FontSize="32"
+                                           FontWeight="Bold"
+                                           Foreground="White"
+                                           Margin="0,7,0,0"/>
+
+                                <StackPanel Orientation="Horizontal"
+                                            Margin="0,7,0,0">
+
+                                    <TextBlock x:Name="lbTipoSecundario"
+                                               Text="LIMITE"
+                                               FontSize="10"
+                                               Foreground="#D8B4FE"
+                                               FontWeight="SemiBold"
+                                               VerticalAlignment="Center"
+                                               Width="69"/>
+
+                                    <TextBlock x:Name="lbValorSecundario"
+                                               Text="R$ 0,00"
+                                               FontSize="16"
+                                               Foreground="#E9D8FF"
+                                               FontWeight="SemiBold"
+                                               Margin="8,0,0,0"
+                                               VerticalAlignment="Center"
+                                               Width="210"/>
+
+                                </StackPanel>
+
+                            </StackPanel>
+
+                            <StackPanel HorizontalAlignment="Right"
+                                        VerticalAlignment="Top">
+
+                                <TextBlock x:Name="lbTipoConta"
+                                           Text="Conta corrente"
+                                           FontSize="13"
+                                           Foreground="#E9D8FF"
+                                           HorizontalAlignment="Right"/>
+
+                            </StackPanel>
+
+                        </Grid>
+
+                    </Border>
+
+                    <TextBlock Text="Ações rápidas"
+                               FontSize="19"
+                               FontWeight="SemiBold"
+                               Foreground="#222222"
+                               Margin="0,30,0,15"/>
+
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+
+                        </Grid.ColumnDefinitions>
+
+                        <Button Grid.Column="0"
+                                Content="Depositar"
+                                Style="{StaticResource ActionButton}"
+                                Margin="0,0,8,0"
+                                Click="DepositarButton_Click"/>
+
+                        <Button Grid.Column="1"
+                                Content="Transferir"
+                                Style="{StaticResource ActionButton}"
+                                Margin="8,0"
+                                Click="TransferirButton_Click"/>
+
+                        <Button Grid.Column="2"
+                                Content="Pagar"
+                                Style="{StaticResource ActionButton}"
+                                Margin="8,0"
+                                Click="PagarButton_Click"/>
+
+                        <Button Grid.Column="3"
+                                Content="Extrato"
+                                Style="{StaticResource ActionButton}"
+                                Margin="8,0,0,0"
+                                Click="ExtratoButton_Click"/>
+
+                    </Grid>
+
+                    <TextBlock Text="Últimas movimentações"
+                               FontSize="19"
+                               FontWeight="SemiBold"
+                               Foreground="#222222"
+                               Margin="0,30,0,15"/>
+
+                    <Border Background="White"
+                            BorderBrush="#DDDDDD"
+                            BorderThickness="1"
+                            Padding="0">
+
+                        <ScrollViewer MaxHeight="300"
+                                      VerticalScrollBarVisibility="Auto"
+                                      HorizontalScrollBarVisibility="Disabled">
+
+                            <StackPanel x:Name="spMovimentacoes"/>
+
+                        </ScrollViewer>
+
+                    </Border>
+
+                </StackPanel>
+
+            </ScrollViewer>
+
+        </Grid>
+
+    </Border>
+
+</Window>

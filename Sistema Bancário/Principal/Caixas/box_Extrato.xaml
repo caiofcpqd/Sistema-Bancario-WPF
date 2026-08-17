@@ -1,0 +1,106 @@
+﻿<Window x:Class="Sistema_Bancário.Principal.Caixas.box_Extrato"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Extrato"
+        Height="600"
+        Width="850"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
+        ResizeMode="NoResize"
+        ShowInTaskbar="False">
+
+    <Window.Resources>
+
+        <Style x:Key="ActionButton"
+               TargetType="Button">
+
+            <Setter Property="Height"
+                    Value="44"/>
+
+            <Setter Property="Padding"
+                    Value="20,0"/>
+
+            <Setter Property="FontSize"
+                    Value="14"/>
+
+            <Setter Property="FontWeight"
+                    Value="SemiBold"/>
+
+            <Setter Property="Cursor"
+                    Value="Hand"/>
+
+            <Setter Property="BorderThickness"
+                    Value="1"/>
+
+        </Style>
+
+    </Window.Resources>
+
+    <Border Background="White"
+            BorderBrush="#D8D8D8"
+            BorderThickness="1"
+            CornerRadius="10">
+
+        <Grid Margin="30">
+
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="Auto"/>
+
+                <RowDefinition Height="*"/>
+
+                <RowDefinition Height="Auto"/>
+
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+
+                <TextBlock Text="Extrato bancário"
+                           FontSize="23"
+                           FontWeight="SemiBold"
+                           Foreground="#222222"/>
+
+                <TextBlock Text="Confira as movimentações da sua conta."
+                           FontSize="13"
+                           Foreground="#777777"
+                           Margin="0,7,0,0"/>
+
+            </StackPanel>
+
+            <Border Grid.Row="1"
+                    Background="#F8F8F8"
+                    BorderBrush="#D8D8D8"
+                    BorderThickness="1"
+                    CornerRadius="7"
+                    Margin="0,22,0,20">
+
+                <ScrollViewer VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled" MouseMove="ScrollViewer_MouseMove">
+
+                    <StackPanel x:Name="spExtratos"
+                                HorizontalAlignment="Stretch"/>
+
+                </ScrollViewer>
+
+            </Border>
+
+            <Grid Grid.Row="2">
+
+                <Button Content="Fechar"
+                        Width="110"
+                        HorizontalAlignment="Left"
+                        Style="{StaticResource ActionButton}"
+                        Background="White"
+                        Foreground="#555555"
+                        BorderBrush="#D5D5D5"
+                        Click="FecharButton_Click"/>
+
+            </Grid>
+
+        </Grid>
+
+    </Border>
+
+</Window>
